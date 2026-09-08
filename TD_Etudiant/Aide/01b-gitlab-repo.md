@@ -25,8 +25,7 @@ Ouvrez un terminal dans le dossier de votre projet :
 git status
 
 # Si "not a git repository", initialiser :
-git init
-git branch -M main
+git branch -M mainz
 ```
 
 Ajoutez le dépôt distant (remplacez `USER` par votre identifiant GitLab) :

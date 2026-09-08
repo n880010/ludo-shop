@@ -12,7 +12,7 @@ Sans protection, n'importe qui peut cliquer sur **Merge pull request** même si 
 
 | Instance | Chemin dans l'interface | Note |
 |----------|-------------------------|------|
-| **github.com** (cloud) | `Votre repo → Settings → Branches → Add classic branch protection rule` | UI la plus récente : `Settings → Branches → Branch protection rules` |
+  | **github.com** (cloud) | `Votre repo → Settings → Branches → Add classic branch protection rule` | UI la plus récente : `Settings → Branches → Branch protection rules` |
 | **GitHub Enterprise Server** (IUT, ex: `github.iut.fr`) | `Settings → Branches` **ou** `Settings → Repository → Branches` selon version GHE | Si vous voyez **Rulesets** (GHE ≥ 3.10), voir encadré ci-dessous |
 
 > **Rôle requis :** `Admin` sur le dépôt (ou `Maintain` avec droits `Admin`). Les étudiants en `Write` ne voient pas `Settings`.
