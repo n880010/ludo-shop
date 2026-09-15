@@ -25,6 +25,7 @@ class ProductTest extends TestCase
 
         $this->assertTrue($product->isAvailable());
     }
+
     public function testIsAvailableWhenInactive(): void
     {
         $product = new Product();
@@ -33,6 +34,7 @@ class ProductTest extends TestCase
 
         $this->assertFalse($product->isAvailable());
     }
+
     public function testIsAvailableWhenOutOfStock(): void
     {
         $product = new Product();
@@ -41,6 +43,6 @@ class ProductTest extends TestCase
 
         $this->assertFalse($product->isAvailable());
     }
-    
+
     // ... autres méthodes
 }
