@@ -82,7 +82,7 @@ la branche principale.
 | Le style de code varie | Le style est vérifié à chaque push |
 | Les dépendances obsolètes restent | Dependabot signale les mises à jour |
 | La qualité dépend de discipline | La qualité est **automatisée** |
-
+test
 ## Prérequis
 
 Avant de commencer, assurez-vous d'avoir :
