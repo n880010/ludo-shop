@@ -49,7 +49,6 @@ class LoginTest extends FunctionalTestCase
     // | à créer `testLogoutRedirectsToHome` | GET /logout | Redirection vers / |
     public function testLogoutRedirectsToHome(): void
     {
-        // Simuler une connexion pour pouvoir se déconnecter
         $crawler = $this->client->request('GET', '/login');
         $csrfToken = $crawler->filter('input[name="_csrf_token"]')->attr('value');
 
@@ -60,6 +59,11 @@ class LoginTest extends FunctionalTestCase
         ]);
 
         $this->assertResponseRedirects();
+        $this->client->followRedirect();
+
+        $this->client->request('GET', '/logout');
+
+        $this->assertResponseRedirects('/');
         $this->client->followRedirect();
         $this->assertRouteSame('app_home');
     }

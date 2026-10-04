@@ -110,4 +110,16 @@ class PromotionServiceTest extends TestCase
         $this->assertSame(30.00, $this->service->getCurrentPrice($product, $currentDate));
         $this->assertTrue($this->service->isOnPromotion($product, $currentDate));
     }
+
+    public function testInvertedDatesAreNotActive(): void
+    {
+        $product = $this->createProduct(50.00, 30.00);
+        $product->setPromoStartsAt(new \DateTimeImmutable('2026-09-01 00:00:00'));
+        $product->setPromoEndsAt(new \DateTimeImmutable('2026-08-01 00:00:00'));
+
+        $currentDate = new \DateTimeImmutable('2026-08-15 12:00:00');
+
+        $this->assertSame(50.00, $this->service->getCurrentPrice($product, $currentDate));
+        $this->assertFalse($this->service->isOnPromotion($product, $currentDate));
+    }
 }

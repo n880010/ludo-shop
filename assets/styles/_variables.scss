@@ -45,7 +45,14 @@ $btn-border-radius: $border-radius;
 $btn-border-radius-sm: 0.4rem;
 $btn-border-radius-lg: 0.625rem;
 
-$font-family-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-sans-serif:
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  Arial,
+  sans-serif;
 $headings-color: $brand-forest-dark;
 $headings-font-weight: 700;
 
