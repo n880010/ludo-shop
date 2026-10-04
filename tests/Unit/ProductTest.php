@@ -26,7 +26,7 @@ class ProductTest extends TestCase
         $this->assertTrue($product->isAvailable());
     }
 
-    public function testIsAvailableWhenInactive(): void
+    public function testIsNotAvailableWhenInactive(): void
     {
         $product = new Product();
         $product->setIsActive(false);
@@ -35,7 +35,7 @@ class ProductTest extends TestCase
         $this->assertFalse($product->isAvailable());
     }
 
-    public function testIsAvailableWhenOutOfStock(): void
+    public function testIsNotAvailableWhenOutOfStock(): void
     {
         $product = new Product();
         $product->setIsActive(true);
@@ -44,5 +44,9 @@ class ProductTest extends TestCase
         $this->assertFalse($product->isAvailable());
     }
 
-    // ... autres méthodes
+    public function testIsMatureReturnsFalseByDefault(): void
+    {
+        $product = new Product();
+        $this->assertFalse($product->isMature());
+    }
 }
