@@ -112,4 +112,43 @@ class CartServiceTest extends TestCase
 
         $this->assertSame(70.00, $this->service->getTotal($cart));
     }
+
+    public function testNormalPriceIsUsedWhenPromotionIsExpired(): void
+    {
+        $user = $this->createStub(User::class);
+        $cart = new Cart($user);
+
+        $product = new Product();
+        $product->setName('Catan');
+        $product->setPrice(50.00);
+        $product->setPromoPrice(35.00);
+        $product->setPromoStartsAt(new \DateTimeImmutable('2020-01-01 00:00:00'));
+        $product->setPromoEndsAt(new \DateTimeImmutable('2021-01-01 00:00:00'));
+        $product->setStock(10);
+
+        $this->service->addProduct($cart, $product, 2);
+
+        $this->assertSame(100.00, $this->service->getTotal($cart));
+    }
+
+    public function testAddingSamePromotionalProductTwiceKeepsPromotionalPrice(): void
+    {
+        $user = $this->createStub(User::class);
+        $cart = new Cart($user);
+
+        $product = new Product();
+        $product->setName('Catan');
+        $product->setPrice(50.00);
+        $product->setPromoPrice(35.00);
+        $product->setPromoStartsAt(new \DateTimeImmutable('2026-01-01 00:00:00'));
+        $product->setPromoEndsAt(new \DateTimeImmutable('2099-01-01 00:00:00'));
+        $product->setStock(10);
+
+        $this->service->addProduct($cart, $product);
+        $this->service->addProduct($cart, $product);
+
+        $this->assertCount(1, $cart->getItems());
+        $this->assertSame(2, $this->service->getItemCount($cart));
+        $this->assertSame(70.00, $this->service->getTotal($cart));
+    }
 }
